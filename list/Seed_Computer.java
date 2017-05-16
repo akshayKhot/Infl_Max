@@ -20,7 +20,7 @@ public class Seed_Computer {
             if(I.get(v).size() < 1)
                 continue;
             else {
-                int infl = I.get(v).size() * this.max.n/sketch_num;
+                int infl = I.get(v).size();
                 if(infl > infl_max) {
                     infl_max = infl;
                     max_node = v;
@@ -28,9 +28,10 @@ public class Seed_Computer {
             }
         }
 
+        infl_max = infl_max * this.max.n/sketch_num;
         total_infl = set_infl + infl_max;
 
-        System.out.println("\nMax Node = " + max_node + ", Influence = " + infl_max + ", Maximum Influence = " + total_infl);
+        //System.out.println("\nMax Node = " + max_node + ", Influence = " + infl_max + ", Maximum Influence = " + total_infl);
 
         if((k - 1)==0)
             return;

@@ -40,6 +40,9 @@ public class Influence_Maximizer {
         m = G.numArcs();
         W = beta * (n + m) * Math.log(n);
 
+        System.out.println("\n\nAlgorithm: List");
+        System.out.println("K: " + k);
+        System.out.println("Beta: " + beta);
         System.out.println("n=" + n + ", m=" + m  + ", W=" + W);
 
         marked = new BitSet(n);
@@ -77,7 +80,7 @@ public class Influence_Maximizer {
         this.seedTime = time/1000.0;
 
 
-        System.out.println("\nTime to create sketches = " + this.sketchTime + " sec");
-        System.out.println("Time to compute seeds = " + this.seedTime + " sec");
+        System.out.println("\nsketches_creation_time = " + this.sketchTime + " sec");
+        System.out.println("compute_seeds_time = " + this.seedTime + " sec");
     }
 }

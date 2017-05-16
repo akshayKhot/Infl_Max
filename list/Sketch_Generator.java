@@ -38,14 +38,14 @@ public class Sketch_Generator {
             if(index % 100000 == 0) {
                 double sofarTimeInMin = (System.currentTimeMillis() - startTime)/(1000.0 * 60);
                 double pctDone = 100*weight_of_current_index/this.max.W;
-
+/*
                 System.out.println(
                         "sketch=" + sketch_num +
                                 ",  index=" + index +
                                 ", weight_of_current_index=" + weight_of_current_index +
                                 ", this is " + pctDone + "% of W" +
                                 ", elapsed " + sofarTimeInMin + " min");
-
+*/
             }
 
             int v = this.max.permutation[gen_rnd.nextInt(this.max.n)];
@@ -64,7 +64,7 @@ public class Sketch_Generator {
             sketch_num++;
         }
 
-        System.out.println("\nIndex: " + index + "\nNumber of Sketches: " + sketch_num);
+        //System.out.println("\nIndex: " + index + "\nNumber of Sketches: " + sketch_num);
 
         System.gc();
     }

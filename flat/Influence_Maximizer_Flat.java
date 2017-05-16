@@ -19,8 +19,6 @@ public class Influence_Maximizer_Flat {
     int[] permutation;
     BitSet marked;
 
-
-
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
 
@@ -38,13 +36,14 @@ public class Influence_Maximizer_Flat {
         m = G.numArcs();
         W = beta * (n + m) * Math.log(n);
 
+        System.out.println("\n\nAlgorithm: Flat Arrays");
+        System.out.println("K: " + k);
+        System.out.println("Beta: " + beta);
         System.out.println("n=" + n + ", m=" + m  + ", W=" + W);
 
         marked = new BitSet(n);
 
         permutation = new int[n];
-
-
 
         for(int i=0; i<n; i++)
             permutation[i] = i;
@@ -56,9 +55,7 @@ public class Influence_Maximizer_Flat {
             permutation[i-1] = permutation[j];
             permutation[j] = temp;
         }
-        System.out.println("Permutation array shuffled.");
-
-
+        //System.out.println("Permutation array shuffled.");
 
         this.p = p;
     }
@@ -81,8 +78,8 @@ public class Influence_Maximizer_Flat {
         this.seedTime = time/1000.0;
 
 
-        System.out.println("\nTime to create sketches = " + this.sketchTime + " sec");
-        System.out.println("Time to compute seeds = " + this.seedTime + " sec");
+        System.out.println("\nsketches_creation_time = " + this.sketchTime + " sec");
+        System.out.println("compute_seeds_time = " + this.seedTime + " sec");
 
     }
 

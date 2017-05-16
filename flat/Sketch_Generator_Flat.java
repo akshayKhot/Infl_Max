@@ -25,14 +25,14 @@ public class Sketch_Generator_Flat {
         nodes = new int[nMAX];
         node_infl = new int[max.n];
 
-        System.out.println("Initializing index I...");
+        //System.out.println("Initializing index I...");
         for(int i=0;i<nMAX;i++)
         {
             sketches[i] = -1;
             nodes[i] = -1;
         }
 
-        System.out.println("index I initialized.");
+        //System.out.println("index I initialized.");
     }
 
     void get_sketch() {
@@ -48,14 +48,14 @@ public class Sketch_Generator_Flat {
             if(index % 100000 == 0) {
                 double sofarTimeInMin = (System.currentTimeMillis() - startTime)/(1000.0 * 60);
                 double pctDone = 100*weight_of_current_index/max.W;
-
+/*
                 System.out.println(
                         "sketch=" + sketch_num +
                                 ",  index=" + index +
                                 ", weight_of_current_index=" + weight_of_current_index +
                                 ", this is " + pctDone + "% of W" +
                                 ", elapsed " + sofarTimeInMin + " min");
-
+*/
             }
 
             int v = max.permutation[gen_rnd.nextInt(max.n)];
@@ -79,7 +79,7 @@ public class Sketch_Generator_Flat {
             count_sketches += max.marked.cardinality();
         }
 
-        System.out.println("\nIndex: " + index + ", Number of Sketches: " + sketch_num + ", Size of array iSketch: " + count_sketches + "\n");
+        //System.out.println("\nIndex: " + index + ", Number of Sketches: " + sketch_num + ", Size of array iSketch: " + count_sketches + "\n");
 
         // Cutting off the tails of sketches and nodes arrays, making the arrays shorter
         iSketch = new int[count_sketches + 1];

@@ -21,21 +21,22 @@ public class Seed_Computer_Flat {
                 continue;
             else
             {
-                if(node_infl[v] * this.max.n / sketch_num > infl_max)
+                if(node_infl[v]> infl_max)
                 {
-                    infl_max = node_infl[v] * this.max.n / sketch_num;
+                    infl_max = node_infl[v];
                     max_node = v;
                 }
             }
         }
 
+        infl_max = infl_max * this.max.n / sketch_num;
+
         total_infl = set_infl + infl_max;
 
-        System.out.println();
+        /*
         System.out.println("Max Node = " + max_node +
                 ", Maximum Influence = " + total_infl);
-        System.out.println();
-
+*/
         if((k - 1)==0)
             return;
 
