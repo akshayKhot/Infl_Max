@@ -12,7 +12,6 @@ public class Influence_Maximizer_Flat {
     double eps = .1;
     double p;
     int k = 5;
-    int beta = 2;
     double W;
     double sketchTime, seedTime;
 
@@ -20,24 +19,36 @@ public class Influence_Maximizer_Flat {
     BitSet marked;
 
     public static void main(String[] args) throws Exception {
-        long startTime = System.currentTimeMillis();
 
-        Influence_Maximizer_Flat imfl = new Influence_Maximizer_Flat("/Users/akshaykhot/Desktop/Thesis/infl_max/sym-noself/cnr-2000-t", 0.1);
-        imfl.maximize();
+        int[] betas = {1, 2};
 
-        long estimatedTime = System.currentTimeMillis() - startTime;
-        System.out.println("Total Time = " + estimatedTime /(1000.0) + " sec");
+        System.out.println("\nAlgorithm: Flat Arrays");
+        System.out.println("===========================");
+
+        for(int beta: betas) {
+
+            long startTime = System.currentTimeMillis();
+
+            Influence_Maximizer_Flat imfl = new Influence_Maximizer_Flat("/Users/akshaykhot/Desktop/Thesis/infl_max/sym-noself/cnr-2000-t", 0.1, beta);
+
+            imfl.maximize();
+
+            long estimatedTime = System.currentTimeMillis() - startTime;
+
+            System.out.println("Total Time = " + estimatedTime / (1000.0) + " sec");
+            System.out.println("---------------------------------------------------");
+        }
     }
 
-    public Influence_Maximizer_Flat(String basename, Double  p) throws Exception {
+    public Influence_Maximizer_Flat(String basename, Double  p, int beta) throws Exception {
         G = ImmutableGraph.load(basename);
 
         n = G.numNodes();
         m = G.numArcs();
         W = beta * (n + m) * Math.log(n);
 
-        System.out.println("\n\nAlgorithm: Flat Arrays");
-        System.out.println("K: " + k);
+
+        System.out.println("\nK: " + k);
         System.out.println("Beta: " + beta);
         System.out.println("n=" + n + ", m=" + m  + ", W=" + W);
 

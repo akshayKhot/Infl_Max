@@ -14,7 +14,6 @@ public class Influence_Maximizer {
     double eps = .1;
     double p; // given probability of arc existence
     int k = 5; // given number of maximum influence nodes
-    int beta = 2;
     double W;
     double sketchTime, seedTime;
 
@@ -22,26 +21,36 @@ public class Influence_Maximizer {
     BitSet marked;
 
     public static void main(String[] args) throws Exception {
-        long startTime = System.currentTimeMillis();
 
-        Influence_Maximizer iml = new Influence_Maximizer("/Users/akshaykhot/Desktop/Thesis/infl_max/sym-noself/cnr-2000-t", 0.1);
+        int[] betas = {1, 2};
 
-        iml.maximize();
+        System.out.println("\nAlgorithm: List");
+        System.out.println("====================");
 
-        long estimatedTime = System.currentTimeMillis() - startTime;
+        for(int beta : betas) {
 
-        System.out.println("Total time = " + estimatedTime / 1000.0 + " sec");
+            long startTime = System.currentTimeMillis();
+
+            Influence_Maximizer iml = new Influence_Maximizer("/Users/akshaykhot/Desktop/Thesis/infl_max/sym-noself/cnr-2000-t", 0.1, beta);
+
+            iml.maximize();
+
+            long estimatedTime = System.currentTimeMillis() - startTime;
+
+            System.out.println("Total time = " + estimatedTime / 1000.0 + " sec");
+            System.out.println("---------------------------------------------------");
+        }
     }
 
-    public Influence_Maximizer(String basename, Double  p) throws Exception {
+    public Influence_Maximizer(String basename, Double  p, int beta) throws Exception {
         G = ImmutableGraph.load(basename);
 
         n = G.numNodes();
         m = G.numArcs();
         W = beta * (n + m) * Math.log(n);
 
-        System.out.println("\n\nAlgorithm: List");
-        System.out.println("K: " + k);
+
+        System.out.println("\nK: " + k);
         System.out.println("Beta: " + beta);
         System.out.println("n=" + n + ", m=" + m  + ", W=" + W);
 
